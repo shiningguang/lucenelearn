@@ -6,8 +6,7 @@
 ##message3_4##
 lucene 代码加入web项目
 
-##message4_1##
-##message4_2##
+##message4_1&message4_2##
 lucene 项目改造使用tika
 
 ##message5_1##
