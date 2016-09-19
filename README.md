@@ -1,6 +1,6 @@
 #lucene学习教程#
 
-视频地址：http://pan.baidu.com/s/1c2vBbwO （公开链接）
+视频地址：<a href="http://pan.baidu.com/s/1c2vBbwO" target="_blank">网盘视频链接</a>（公开链接）
 
 
 ##message3_4##
