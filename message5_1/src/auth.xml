@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<auth>
+	<role id="0">
+		<name>anonymous</name>
+		<resources>
+			/user_add*,/user_log*,/message_list.action,/json_checkUser.action,
+			/json_login.action,/json_authRefresh.action,/user_authError.action,
+			/message_show.action,/index_search.action
+		</resources>
+	</role>
+	<role id="1">
+		<name>loginUser</name>
+		<include>anonymous</include>
+		<resources>
+			/user_update*,/message_add*,/user_show*,/json_uploadAttach.action,/message_update*
+			,/json_commentAdd.action
+		</resources>
+	</role>
+	<role id="3">
+		<name>admin</name>
+		<resources>*</resources>
+	</role>
+</auth>

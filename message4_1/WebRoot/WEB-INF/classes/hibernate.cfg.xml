@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+<session-factory>
+	<!-- Hiberante链接MySQL的基本配置 -->
+	<property name="hibernate.connection.driver_class">
+		com.mysql.jdbc.Driver
+	</property>
+	<property name="hibernate.connection.username">itat_msg</property>
+	<property name="hibernate.connection.password">itat123</property>
+	<property name="hibernate.connection.url">
+		jdbc:mysql://localhost:3306/itat_msg
+	</property>
+	<property name="hibernate.dialect">
+		org.hibernate.dialect.MySQLDialect
+	</property>
+
+	<!-- 配置可以显示SQL语句 -->
+	<property name="show_sql">true</property>
+	<!-- 设置根据用户对象自动创建数据库表 -->
+	<property name="hbm2ddl.auto">update</property>
+	<mapping class="org.itat.message.vo.Attachment" />
+	<mapping class="org.itat.message.vo.Comment" />
+	<mapping class="org.itat.message.vo.Message" />
+	<mapping class="org.itat.message.vo.User" />
+
+
+</session-factory>
+</hibernate-configuration>

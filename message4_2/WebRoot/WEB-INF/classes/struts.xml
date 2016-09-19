@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+<!-- 设置扩展名 -->
+    <constant name="struts.action.extension" value="action,do"/>
+<!-- 设置修改了配置文件不用重新启动 -->
+    <constant name="struts.configuration.xml.reload" value="true"/>
+    <constant name="struts.ui.theme" value="simple"/>
+    
+    <package name="default" namespace="/" extends="struts-default">
+    <!-- 配置了全局异常处理 -->
+    	<global-results>
+    		<result name="login">/WEB-INF/jsp/user/loginInput.jsp</result>
+    		<result name="message_list">/WEB-INF/jsp/message/list.jsp</result>
+    		<result name="findException">/inc/error.jsp</result>
+    	</global-results>
+    	<global-exception-mappings>
+    		<exception-mapping result="findException" exception="org.itat.message.exception.MessageException"/>
+    	</global-exception-mappings>
+    	<action name="*_*" class="{1}Action" method="{2}">
+    	 	<result name="success">/WEB-INF/jsp/{1}/{2}.jsp</result>
+    	 	<result name="input">/WEB-INF/jsp/{1}/{2}Input.jsp</result>
+    	 	<result name="redirect" type="redirect">/${#urlAction}</result>
+    	 </action>
+    </package>
+</struts>
+

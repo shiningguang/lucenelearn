@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="js/file/swfobject.js"></script>
+<script type="text/javascript" src="js/file/jquery.uploadify.v2.1.4.js"></script>
+<link rel="stylesheet" href="js/file/uploadify.css" type="text/css" />
+<script type="text/javascript">
+	$(function(){
+		var uploadify = $("#myfile").uploadify({
+			uploader:"js/file/uploadify.swf",//指定文件上传的进度条的位置
+			script:"json_uploadAttach.action",//指定用那个服务器端程序处理文件操作
+			cancelImg:"js/file/cancel.png",//取消文件上传的图标
+			fileDataName:"myfile",//文件上传到服务器的名称(使用file中的name)
+			method:"get",//通过post方式上传
+			queueID:"files",//上传队列说存储的位置
+			auto:false,//是否选中之后就上传,false表示选中之后不上传
+			multi:true,//时候支持多文件上传
+			onComplete:fileComplete//当一个文件上传完成之后执行该方法
+			/*
+			onComplete表示当一个文件上传成功之后的操作
+			fileComplete有event, ID, fileObj, response, data这样几个参数
+			使用最多是:fileObj有:[name] - 文件名
+								[filePath] - 文件路径
+								[size] – 文件的大小
+								[creationDate] – 文件的创建时间
+								[modificationDate] – 文件最后一次的修改时间
+								[type] – 文件类型
+					   response表示上传之后服务器返回的消息
+					   data中有两个参数:
+						   [fileCount] - 队列中还剩余的文件数量
+						   [speed] - 文件的上传速度xxKB/s为单位
+			*/
+			/*
+			处理onComplete之后还有如下一些方法（具体用法（参数使用）还是需要参照帮助）
+				onInit          : function() {}, // 初始化的时候执行的方法
+				onSelect        : function() {}, // 文件被选中之后执行的方法
+				onSelectOnce    : function() {}, // （文件添加到队列时执行）Function to run once when files are added to the queue
+				onQueueFull     : function() {}, // 文件队列添加结束Function to run when the queue reaches capacity
+				onCheck         : function() {}, // Function to run when script checks for duplicate files on the server
+				onCancel        : function() {}, // 取消文件上传时执行Function to run when an item is cleared from the queue
+				onClearQueue    : function() {}, // Function to run when the queue is manually cleared
+				onError         : function() {}, // Function to run when an upload item returns an error
+				onProgress      : function() {}, // Function to run each time the upload progress is updated
+				onComplete      : function() {}, // Function to run when an upload is completed
+				onAllComplete   			    //当所有的上传信息结束时的方法
+			*/
+			
+		});
+		$("#beginUpload").css("cursor","pointer");
+		$("#beginUpload").click(function(){
+			alert(uploadify);
+			$("#myfile").uploadifyUpload();
+		});
+		
+		function fileComplete(event, ID, fileObj, response, data) {
+			//$("#ok").append(fileObj.name+"<br/>");
+			//$("#ok").append("<img src=/>")
+			var p = $.parseJSON(response);
+			$("#ok").html($("#ok").html()+"<br/><img src='file.servlet?filename="+p.path+"&type="+p.type+"'/>");
+		}
+	});
+</script>
+</head>
+<body>
+<div id="files"></div>
+<input type="file" id="myfile" name="myfile"/>
+<div id="ok"></div>
+<div id="beginUpload">upload</div>
+
+</body>
+</html>

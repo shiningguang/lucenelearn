@@ -1,0 +1,28 @@
+table.bc {
+	border-top:1px solid #000;
+	border-left:1px solid #000;
+}
+table.bc td{
+	border-right:1px solid #000;
+	border-bottom:1px solid #000;
+	padding:5px;
+}
+table.bc thead tr {
+	background:#66f;
+	color:#fff;
+}
+
+tr.even {
+	background:#999;
+}
+tr.odd {
+	background:#eee;
+}
+tr.hover {
+	background:#963;
+	color:#fff;
+}
+.emphasis {
+	color:#f00;
+	font-weight:bolder;
+}

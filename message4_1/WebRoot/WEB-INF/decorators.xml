@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<decorators defaultdir="/WEB-INF/temp/">
+    <!-- Any urls that are excluded will never be decorated by Sitemesh -->
+    <excludes>
+        <pattern>/json*</pattern>
+    </excludes>
+
+    <decorator name="main" page="basic.jsp">
+        <pattern>/*</pattern>
+    </decorator>
+
+</decorators>
